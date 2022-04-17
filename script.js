@@ -1,7 +1,9 @@
 const clear = document.querySelector('.clear');
-const plus = document.querySelector('#plus_button');
+const enter = document.querySelector('#plus_button');
 const input = document.querySelector('input');
 const inputBox = document.querySelector('#inputBox');
+const flex = document.querySelector('#flex');
+const plus = document.querySelector('#plus');
 
 clear.addEventListener('click', (event) => {
     if (input.value != "") {
@@ -10,6 +12,15 @@ clear.addEventListener('click', (event) => {
     else {
         alertify.alert("Please enter the value")
     }
+})
+flex.addEventListener('mouseover', (event) => {
+    flex.style.backgroundColor = '#9953F1';
+    plus.style.backgroundColor = '#AA68FE';
+    flex.addEventListener('mouseout', (event) => {
+        flex.style.backgroundColor = '#833AE0';
+        plus.style.backgroundColor = '#9953F1';
+
+    })
 })
 
 const List = document.createElement('div');
@@ -21,7 +32,7 @@ const box = document.querySelector('.box')
 box.insertBefore(List, inputBox);
 
 
-plus.addEventListener('click', (event) => {
+enter.addEventListener('click', (event) => {
          createInput();
          input.value = "";
    
@@ -50,70 +61,30 @@ function createInput() {
     })
 }
 // ---------------------------------------------------------
-const sorting = document.querySelector('#sortingIcon');
+let arr = [];
+let a = 1;
+const sorting = document.getElementById('sortingIcon');
+sorting.addEventListener('click', (event) => {
 
-if (sorting.src = 'ToDoImg/Group 74.png') {
-    sorting.addEventListener('mouseover', (e) => {
-        sorting.src = "ToDoImg/Group 73.png";
-    })
-
-    sorting.addEventListener('mouseout', (e) => {
-        sorting.src = "ToDoImg/Group 74.png";
-    })
-
-    let arr = [];
-    let a=1;
-    sorting.addEventListener('click', (event) => {
-    
-    if(a==1){
-       const items = document.getElementsByTagName('li');
-            for (let i = 0; i < items.length; i++) {
-                console.log(items[i])
-                arr.push(items[i].firstChild.value);
-            }
-            arr.sort();
-            console.log(arr)
-            for (let i = 0; i < items.length; i++) {
-                items[i].firstChild.value = arr[i];
-            }
-            a=0;
-    }
-    
-     else if(a==0){
-            
-            sorting.src = 'ToDoImg/Group 74.png';
-            const items = document.getElementsByTagName('li');
-    
-        console.log('aaa')
-            console.log(arr)
-            arr.reverse();
-            console.log(arr2)
-            
-            for (let i = 0; i < items.length; i++) {
-                items[i].firstChild.value = arr[i];
-            }
-            a=1;
+    if (a == 1) {
+        const items = document.getElementsByTagName('li');
+        for (let i = 0; i < items.length; i++) {
+            console.log(items[i])
+            arr.push(items[i].firstChild.value);
         }
-    
-    })
-}
+        arr.sort();
+        for (let i = 0; i < items.length; i++) {
+            items[i].firstChild.value = arr[i];
+        }
+        a = 0;
+    }
 
-
-
-
-//     var dragged;
-//     document.addEventListener("dragstart", function (event) {
-//         dragged = event.target;
-//     }, false);
-
-//     document.addEventListener("dragover", function (event) {
-//         event.preventDefault();
-//     }, false);
-
-//     document.addEventListener("drop", function (event) {
-//         event.preventDefault();
-//         if (event.target.className == "dropzone") {
-//             dragged.parentNode.removeChild(dragged);
-//             event.target.appendChild(dragged);
-//         }
-//     }, false);
+    else if (a == 0) {
+        const items = document.getElementsByTagName('li');
+        arr.reverse();
+        for (let i = 0; i < items.length; i++) {
+            items[i].firstChild.value = arr[i];
+        }
+        a = 1;
+    }
+})

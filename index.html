@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <script src="https://kit.fontawesome.com/e424ba3d3a.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,7 +25,8 @@
     <div class="box">
         <div id="yellow"></div>
         <h1>To-do list</h1>
-        <img id="sortingIcon" src="ToDoImg/Group 74.png" alt="sorting">
+        <i onclick="myfunc(this);" id="sortingIcon" class="fa-solid fa-arrow-down-short-wide"></i>
+
         <div id="inputBox">
             <input class="input" type="text" name="input1">
             <img class="clear" src="ToDoImg/delete.svg" alt="">
