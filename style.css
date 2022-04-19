@@ -1,164 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-* {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+.box{
+max-height: 897px;
+margin: 250px auto;
+width: 336px;
+height: auto;
+border: 1px solid #C4C4C4;
+border-radius: 10px;
+
 }
 
-.box {
-    width: 336px;
-    height: auto;
-    border: 1px solid #C4C4C4;
-    border-radius: 10px;
-    margin: auto;
-    margin-top: 232px;
-    padding-bottom: 19px;
+.yellow{
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+width: 336px;
+height: 28px;
+background: #FFDC40;
+margin-bottom: 13px;
 }
+.title{
+width: 198px;
+height: 34px;
+margin: 0 auto;
+margin-bottom: 24px;
+font-style: normal;
+font-weight: 900;
+font-size: 26px;
+line-height: 30px;
+text-align: center;
+text-transform: capitalize;
+color: #000000;
+}
+.sorting{
+height: 15px;
+display: flex;
+justify-content:flex-end;
+margin-bottom: 12px;
+cursor: pointer;
 
-#yellow {
+}
+.myInput{
     width: 100%;
-    height: 28px;
-    background-color: #FFDC40;
-    overflow: hidden;
-    border-radius: 10px 10px 0px 0px;
+height: 40px;
+border: none;
 }
-
-h1 {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 26px;
-    line-height: 30px;
-    text-align: center;
-    text-transform: capitalize;
-    margin-top: 13px;
-    margin-bottom: 16px;
-}
-
-.input {
-    width: 286px;
-    margin: 0px 22px 0px 28px;
-    height: 40px;
-    border: 1px solid #C4C4C4;
-    border-radius: 10px;
-    padding-right: 30px;
-    background-origin: content-box;
-    padding-left: 30px;
-}
-
-.List {
-    display: none;
-    width: 286px;
-    height: auto;
-    margin: 0px 22px 0px 28px;
-    border: 1px solid #C4C4C4;
-    border-radius: 10px;
-    padding-right: 30px;
-    background-origin: content-box;
-    padding-left: 20px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-.newInput {
-    border-style: hidden;
-}
-
-.newInput:focus {
+.myInput:focus{
     outline: none;
 }
-
-ul {
-    list-style: none;
+.filter{
+    margin-right: 30px;
+}
+.add{
+    cursor: pointer;
+width: 150px;
+height: 42px;
+background: #833AE0;
+border-radius: 71px;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+margin:0 auto;
+border: none;
+margin-bottom: 19px;
+}
+.plus{
+width: 42px;
+height: 42px;
+background: #9953F1;
+border-radius: 71px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.enter{  
+size:14px;
+line-height: 16.41px;
+display: flex;
+align-items: center;
+text-align: center;
+color: white;
+margin-left: 10px;
 }
 
-li {
-    padding: 10px;
-}
-
-#sortingIcon {
-    padding-left: 84%;
-    margin-bottom: 8px;
-}
-
-#inputBox {
-    position: relative;
-}
-
-#plus_button {
-    border: none;
-    background: none;
-    margin-top: 0px;
-}
-
-#plus_button:hover {
+.clear{
     cursor: pointer;
 }
-
-.clear {
-    border: none;
-    background: white;
-    position: absolute;
-    margin-top: 8px;
-    right: 50px;
-    z-index: 2;
+.clear:hover{
+    content: url("ToDoImg/Group 70.svg");
+}
+.sort{
     cursor: pointer;
-    top: 2px;
+    margin-right: 30px;
 }
 
-.clearItem {
-    border: none;
-    background: white;
-    position: absolute;
-    padding-top: 0px;
-    right: 0px;
-    z-index: 2;
-    cursor: pointer;
-}
-
-.clear:hover,
-.clearItem:hover {
-    background: #833AE0;
-    border-radius: 20px;
-    cursor: default;
-}
-
-#flex {
-    display: flex;
-    align-items: center;
-    width: 150px;
-    height: 42px;
-    background: #833AE0;
-    border-radius: 71px;
-    margin-left: 92px;
-    margin-top: 18px;
-}
-
-#enter {
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    text-align: center;
-    color: #FFFFFF;
-    padding-left: 8%;
-}
-
-#plus {
-    width: 42px;
-    height: 42px;
-    background: #9953F1;
-    border-radius: 71px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #FFFFFF;
-    padding-top: 8%;
-}
+#todos{
+    max-height: 850px;
+    /* overflow: auto; */
+    border: 1px solid #C4C4C4;
+    width: 286px;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 0 10px;
+   margin-bottom: 18px;
+    }
+    #todo{
+        display: flex;
+        justify-content: space-between;
+    }

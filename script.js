@@ -1,90 +1,104 @@
-const clear = document.querySelector('.clear');
-const enter = document.querySelector('#plus_button');
-const input = document.querySelector('input');
-const inputBox = document.querySelector('#inputBox');
-const flex = document.querySelector('#flex');
-const plus = document.querySelector('#plus');
 
-clear.addEventListener('click', (event) => {
-    if (input.value != "") {
-        input.value = "";
-    }
-    else {
-        alertify.alert("Please enter the value")
-    }
-})
-flex.addEventListener('mouseover', (event) => {
-    flex.style.backgroundColor = '#9953F1';
-    plus.style.backgroundColor = '#AA68FE';
-    flex.addEventListener('mouseout', (event) => {
-        flex.style.backgroundColor = '#833AE0';
-        plus.style.backgroundColor = '#9953F1';
-
-    })
-})
-
-const List = document.createElement('div');
-List.classList.add('List');
-const ul = document.createElement('ul');
-ul.style.position = 'relative';
-List.append(ul);
-const box = document.querySelector('.box')
-box.insertBefore(List, inputBox);
+const button = document.querySelector('.add');
+let form = document.querySelector("form")
+let todos = document.getElementById("todos");
+let ToDo = document.querySelector(".ToDo");
+let sort=document.querySelector(".filter");
+let img=document.querySelector(".filter");
+let input=document.querySelector("input")
 
 
-enter.addEventListener('click', (event) => {
-         createInput();
-         input.value = "";
-   
+form.addEventListener("submit", e => { 
+    todos.innerHTML += `
+<div id="todo">
+<input class="myInput" type="text" name="todo" ">
+<img  class="clear" src="ToDoImg/delete.svg" alt="">
+</div>
+
+`
+let input = document.querySelectorAll('.myInput'); 
+    input.forEach(findItem)
+    e.preventDefault() 
+
 })
 
-function createInput() {
-    const li = document.createElement('li');
-    const newInput = document.createElement('input')
-    newInput.value = input.value;
-    newInput.classList.add('newInput')
-    let img = document.createElement('img');
-    img.src = "ToDoImg/delete.svg";
-    img.classList.add('clearItem');
-    li.append(newInput)
-    li.append(img);
-    ul.append(li);
-    img.style.boxSizing = 'border-box';
-    List.style.display = 'block';
-    img.addEventListener('click', (e) => {
-        li.firstChild.value = '';
-        li.style.display = 'none';
-        const first = ul.firstChild;
-        if (li == ul.firstChild) {
-            List.style.display = 'none';
-        }
-    })
+
+let firstInput = document.querySelector(".myInput");
+firstInput.addEventListener("blur", (_) => {
+    firstInput.setAttribute("value", firstInput.value)
+
+});
+
+function findItem(item) {
+    item.addEventListener("keyup", (_) => {
+        item.addEventListener("blur", (_) => {
+            item.setAttribute("value", item.value)
+        });
+    });
+
 }
-// ---------------------------------------------------------
+ToDo.addEventListener('click', deleteTodo)
+function deleteTodo(e) {
+    if(e.target.className=="clear"){
+       
+        e.target.parentElement.remove();
+    }
+    
+}
+
+sort.addEventListener("click",sortTodo);
 let arr = [];
-let a = 1;
-const sorting = document.getElementById('sortingIcon');
-sorting.addEventListener('click', (event) => {
+let result;
 
-    if (a == 1) {
-        const items = document.getElementsByTagName('li');
-        for (let i = 0; i < items.length; i++) {
-            console.log(items[i])
-            arr.push(items[i].firstChild.value);
-        }
-        arr.sort();
-        for (let i = 0; i < items.length; i++) {
-            items[i].firstChild.value = arr[i];
-        }
-        a = 0;
-    }
 
-    else if (a == 0) {
-        const items = document.getElementsByTagName('li');
-        arr.reverse();
-        for (let i = 0; i < items.length; i++) {
-            items[i].firstChild.value = arr[i];
-        }
-        a = 1;
-    }
+let index=0;
+function sortTodo(e){
+let input=document.querySelectorAll(".myInput");    
+let arr=[]; 
+input.forEach(item=>{
+    arr.push(item.value.trim());
 })
+if(index==0){
+    img.src="ToDoImg/Group 73.png";
+    arr.sort((a,b)=>{
+        if(a>b){
+            return 1;
+        }else if (a<b){
+            return -1;
+        }else { 
+            return 0;
+        }
+
+    })
+    index++;
+
+}else {
+    img.src="ToDoImg/Group 91.png";
+    arr.sort((a,b)=>{ 
+        if(a>b){
+            return -1;
+        }else if (a<b){
+            return 1;
+        }else {
+            return 0;
+            
+        }
+        
+
+    })
+    index--;
+}
+
+todos.innerHTML=""
+arr.forEach(item=>{
+todos.innerHTML+=`
+<div id="todo">
+<input class="myInput" type="text" name="todo" value="${item}" ">
+<img  class="clear" src="ToDoImg/delete.svg" alt="">
+</div>
+`
+}
+    )
+    let inputs=document.querySelectorAll(".myInput");
+     inputs.forEach(findItem)
+}
